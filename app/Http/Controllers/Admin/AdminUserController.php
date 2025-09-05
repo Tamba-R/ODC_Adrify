@@ -35,14 +35,14 @@ class AdminUserController extends Controller
     {
         //
         $request->validate([
-            'nom'=>'required|string',
+            'name'=>'required|string',
             'email'=>'required|email|unique:users',
-            'role'=>'required|in:particulier,validateur,admin',
+            'role'=>'required|in:user,validator,admin',
             'password'=>'required|min:6'
         ]);
 
         User::create([
-            'nom'=>$request->nom,
+            'name'=>$request->name,
             'email'=>$request->email,
             'role'=>$request->role,
             'password'=>Hash::make($request->password),
@@ -75,12 +75,12 @@ class AdminUserController extends Controller
     {
         //
         $request->validate([
-            'nom'=>'required|string',
+            'name'=>'required|string',
             'email'=>"required|email|unique:users,email,$user->id",
-            'role'=>'required|in:particulier,validateur,admin',
+            'role'=>'required|in:user,validator,admin',
         ]);
 
-        $user->update($request->only('nom','email','role'));
+        $user->update($request->only('name','email','role'));
         return redirect()->route('admin.users.index')->with('success','Utilisateur mis à jour');
     }
 

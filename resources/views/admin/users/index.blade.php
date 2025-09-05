@@ -20,7 +20,7 @@
         <tbody>
             @forelse($users as $user)
             <tr>
-                <td class="border px-2 py-1">{{ $user->nom }}</td>
+                <td class="border px-2 py-1">{{ $user->name }}</td>
                 <td class="border px-2 py-1">{{ $user->email }}</td>
                 <td class="border px-2 py-1">{{ ucfirst($user->role) }}</td>
                 <td class="border px-2 py-1 space-x-2">

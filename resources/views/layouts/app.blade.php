@@ -4,17 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@yield('title') - Adrify</title>
-    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-gray-100 font-sans">
 
 @auth
     @if(auth()->user()->role == 'admin')
-        <div class="flex">
+        <div class="flex min-h-screen">
 
             <!-- Sidebar Admin -->
-            <div class="w-64 h-screen bg-gray-800 text-gray-100 fixed">
+            <aside class="w-64 bg-gray-800 text-gray-100 flex-shrink-0">
                 <div class="p-4 text-xl font-bold border-b border-gray-700">
                     Adrify - Admin
                 </div>
@@ -63,10 +62,10 @@
                         </li>
                     </ul>
                 </nav>
-            </div>
+            </aside>
 
             <!-- Contenu principal -->
-            <div class="flex-1 ml-64">
+            <div class="flex-1 flex flex-col">
 
                 <!-- Header -->
                 <header class="bg-white shadow p-4 flex justify-between items-center">
@@ -81,7 +80,7 @@
                 </header>
 
                 <!-- Page content -->
-                <main class="p-6">
+                <main class="p-6 flex-1 overflow-auto">
                     @yield('content')
                 </main>
 

@@ -22,7 +22,7 @@
 
         <div>
             <label class="block mb-1 font-medium">Nom :</label>
-            <input type="text" name="nom" value="{{ old('nom', $user->nom) }}" class="border p-2 w-full" required>
+            <input type="text" name="nom" value="{{ old('name', $user->name) }}" class="border p-2 w-full" required>
         </div>
 
         <div>
