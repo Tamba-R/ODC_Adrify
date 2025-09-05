@@ -31,8 +31,8 @@
                     <td class="py-3 px-6 space-x-2">
                         <form action="{{ route('validator.action', $address) }}" method="POST" class="inline">
                             @csrf
-                            <button name="action" value="validée" class="bg-green-600 hover:bg-green-700 text-white px-3 py-1 rounded transition">Valider</button>
-                            <button name="action" value="rejetée" class="bg-red-600 hover:bg-red-700 text-white px-3 py-1 rounded transition">Rejeter</button>
+                            <button name="action" value="validee" class="bg-green-600 hover:bg-green-700 text-white px-3 py-1 rounded transition">Valider</button>
+                            <button name="action" value="rejete" class="bg-red-600 hover:bg-red-700 text-white px-3 py-1 rounded transition">Rejeter</button>
                         </form>
                     </td>
                 </tr>

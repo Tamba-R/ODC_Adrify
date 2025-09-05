@@ -16,9 +16,10 @@ class ValidatorController extends Controller
     public function dashboard()
     {
         $pendingCount = Address::where('statut','en_attente')->count();
-        $validatedCount = Validation::where('user_id', Auth::id())->count();
+        $validatedCount = Address::where('statut','validee')->count();
+        $rejectedCount = Address::where('statut','rejete')->count();
 
-        return view('validator.dashboard', compact('pendingCount','validatedCount'));
+        return view('validator.dashboard', compact('pendingCount','validatedCount','rejectedCount'));
     }
 
 
@@ -34,7 +35,7 @@ class ValidatorController extends Controller
     public function validateAddress(Request $request, Address $address)
     {
         $request->validate([
-            'action' => 'required|in:validée,rejetée'
+            'action' => 'required|in:validee,rejete'
         ]);
 
         // Créer la validation
@@ -47,12 +48,12 @@ class ValidatorController extends Controller
 
         // Mettre à jour le statut de l’adresse si nécessaire
         $requiredValidations = 3; // on peut récupérer depuis Settings plus tard
-        $validCount = Validation::where('address_id', $address->id)->where('statut','validée')->count();
+        $validCount = Validation::where('address_id', $address->id)->where('statut','validee')->count();
 
         if($validCount >= $requiredValidations) {
-            $address->update(['statut'=>'validée']);
-        } elseif($request->action == 'rejetée') {
-            $address->update(['statut'=>'rejetée']);
+            $address->update(['statut'=>'validee']);
+        } elseif($request->action == 'rejete') {
+            $address->update(['statut'=>'rejete']);
         }
 
         return redirect()->route('validator.pending')->with('success','Action effectuée avec succès !');

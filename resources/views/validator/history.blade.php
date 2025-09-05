@@ -20,9 +20,9 @@
                 <tr class="border-b border-gray-200 hover:bg-gray-100 transition">
                     <td class="py-3 px-6">{{ $validation->address->adrify_code }}</td>
                     <td class="py-3 px-6">
-                        @if($validation->statut === 'validée')
+                        @if($validation->statut === 'validee')
                             <span class="text-green-600 font-semibold">{{ ucfirst($validation->statut) }}</span>
-                        @elseif($validation->statut === 'rejetée')
+                        @elseif($validation->statut === 'rejete')
                             <span class="text-red-600 font-semibold">{{ ucfirst($validation->statut) }}</span>
                         @else
                             <span>{{ ucfirst($validation->statut) }}</span>

@@ -13,11 +13,19 @@
     <div class="p-6 bg-white rounded shadow hover:shadow-lg transition">
         <h2 class="font-bold text-xl mb-2">Adresses à valider</h2>
         <p>Consultez les adresses en attente et confirmez ou rejetez chaque adresse.</p>
+        <p class="text-gray-800 font-semibold mt-2">En attente : {{ $pendingCount }}</p>
         <a href="{{ route('validator.pending') }}" class="text-blue-600 hover:underline mt-2 inline-block">Voir</a>
     </div>
     <div class="p-6 bg-white rounded shadow hover:shadow-lg transition">
-        <h2 class="font-bold text-xl mb-2">Historique</h2>
-        <p>Consultez toutes vos validations passées et leur statut.</p>
+        <h2 class="font-bold text-xl mb-2">Validations réussies</h2>
+        <p>Consultez toutes vos validations validées.</p>
+        <p class="text-gray-800 font-semibold mt-2">Validées : {{ $validatedCount }}</p>
+        <a href="{{ route('validator.history') }}" class="text-blue-600 hover:underline mt-2 inline-block">Voir</a>
+    </div>
+    <div class="p-6 bg-white rounded shadow hover:shadow-lg transition">
+        <h2 class="font-bold text-xl mb-2">Adresses rejetées</h2>
+        <p>Consultez toutes les adresses que vous avez rejetées.</p>
+        <p class="text-gray-800 font-semibold mt-2">Rejetées : {{ $rejectedCount }}</p>
         <a href="{{ route('validator.history') }}" class="text-blue-600 hover:underline mt-2 inline-block">Voir</a>
     </div>
 </div>
