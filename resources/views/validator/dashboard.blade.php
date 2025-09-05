@@ -1,32 +1,24 @@
-@extends('layouts.app')
+@extends('layouts.val')
 
-@section('title', 'Dashboard Validateur')
+@section('title', 'Dashboard')
 
 @section('content')
-<div class="container mx-auto p-4">
-    <div class="flex justify-between items-center mb-4">
-        <h1 class="text-2xl font-bold">Dashboard Validateur</h1>
-        <!-- Bouton Déconnexion -->
-        <form action="{{ route('logout') }}" method="POST">
-            @csrf
-            <button type="submit" class="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700">
-                Déconnexion
-            </button>
-        </form>
+<h1 class="text-3xl font-bold mb-6">Bienvenue sur votre Dashboard</h1>
+
+<p class="text-gray-700 mb-4">
+    Ici, vous pouvez valider les adresses soumises par les utilisateurs et consulter votre historique de validations.
+</p>
+
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6">
+    <div class="p-6 bg-white rounded shadow hover:shadow-lg transition">
+        <h2 class="font-bold text-xl mb-2">Adresses à valider</h2>
+        <p>Consultez les adresses en attente et confirmez ou rejetez chaque adresse.</p>
+        <a href="{{ route('validator.pending') }}" class="text-blue-600 hover:underline mt-2 inline-block">Voir</a>
     </div>
-
-    <div class="grid grid-cols-2 gap-4">
-        <div class="bg-blue-200 p-4 rounded">
-            <h2 class="text-lg font-bold">Adresses en attente</h2>
-            <p class="text-3xl">{{ $pendingCount }}</p>
-            <a href="{{ route('validator.pending') }}" class="text-blue-700 underline">Voir les adresses</a>
-        </div>
-
-        <div class="bg-green-200 p-4 rounded">
-            <h2 class="text-lg font-bold">Validations effectuées</h2>
-            <p class="text-3xl">{{ $validatedCount }}</p>
-            <a href="{{ route('validator.history') }}" class="text-green-700 underline">Voir l’historique</a>
-        </div>
+    <div class="p-6 bg-white rounded shadow hover:shadow-lg transition">
+        <h2 class="font-bold text-xl mb-2">Historique</h2>
+        <p>Consultez toutes vos validations passées et leur statut.</p>
+        <a href="{{ route('validator.history') }}" class="text-blue-600 hover:underline mt-2 inline-block">Voir</a>
     </div>
 </div>
 @endsection

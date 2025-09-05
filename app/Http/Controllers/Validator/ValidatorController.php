@@ -15,7 +15,7 @@ class ValidatorController extends Controller
     // Dashboard du validateur
     public function dashboard()
     {
-        $pendingCount = Address::where('statut','en attente')->count();
+        $pendingCount = Address::where('statut','en_attente')->count();
         $validatedCount = Validation::where('user_id', Auth::id())->count();
 
         return view('validator.dashboard', compact('pendingCount','validatedCount'));
@@ -25,7 +25,7 @@ class ValidatorController extends Controller
     // Liste des adresses en attente
     public function pendingAddresses()
     {
-        $addresses = Address::where('statut','en attente')->latest()->paginate(10);
+        $addresses = Address::where('statut','en_attente')->latest()->paginate(10);
         return view('validator.pending', compact('addresses'));
     }
 
@@ -39,7 +39,7 @@ class ValidatorController extends Controller
 
         // Créer la validation
         Validation::create([
-            'adresse_id' => $address->id,
+            'address_id' => $address->id,
             'user_id' => Auth::id(),
             'statut' => $request->action,
             'date_validation' => now(),
@@ -47,7 +47,7 @@ class ValidatorController extends Controller
 
         // Mettre à jour le statut de l’adresse si nécessaire
         $requiredValidations = 3; // on peut récupérer depuis Settings plus tard
-        $validCount = Validation::where('adresse_id', $address->id)->where('statut','validée')->count();
+        $validCount = Validation::where('address_id', $address->id)->where('statut','validée')->count();
 
         if($validCount >= $requiredValidations) {
             $address->update(['statut'=>'validée']);
