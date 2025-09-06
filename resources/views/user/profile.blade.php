@@ -16,20 +16,21 @@
 
         <div class="mb-4">
             <label class="block font-bold mb-1">Nom</label>
-            <input type="text" name="nom" class="border p-2 w-full" value="{{ old('nom', Auth::user()->nom) }}" required>
+            <input type="text" name="name" class="border p-2 w-full" value="{{ old('name', Auth::user()->name) }}" required>
         </div>
 
         <div class="mb-4">
             <label class="block font-bold mb-1">Email</label>
-            <input type="email" name="email" class="border p-2 w-full" value="{{ old('email', Auth::user()->email) }}" required>
+            <input type="email" name="email" class="border p-2 w-full" value="{{ old('email', Auth::user()->email) }}" >
         </div>
 
-        <div class="mb-4">
+        {{-- <div class="mb-4">
             <label class="block font-bold mb-1">Téléphone</label>
             <input type="text" name="telephone" class="border p-2 w-full" value="{{ old('telephone', Auth::user()->telephone) }}" required>
-        </div>
+        </div> --}}
 
         <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded">Mettre à jour</button>
+        <a href="{{ route('user.dashboard') }}" class="text-gray-600 underline hover:text-gray-800">Retour</a>
     </form>
 </div>
 @endsection

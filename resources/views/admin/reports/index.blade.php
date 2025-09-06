@@ -31,7 +31,7 @@
                 @forelse($reports as $report)
                 <tr class="hover:bg-gray-50">
                     <td class="px-4 py-2 border-b">{{ $report->address->adrify_code }}</td>
-                    <td class="px-4 py-2 border-b">{{ $report->user->nom }}</td>
+                    <td class="px-4 py-2 border-b">{{ $report->user->name }}</td>
                     <td class="px-4 py-2 border-b">{{ $report->motif }}</td>
                     <td class="px-4 py-2 border-b">{{ $report->date_signalement }}</td>
                     <td class="px-4 py-2 border-b space-x-2">

@@ -20,7 +20,9 @@ class UserController extends Controller
         $sharesCount = Share::whereHas('address', function($q){
             $q->where('user_id', Auth::id());
         })->count();
-        $reportsCount = Report::where('user_id', Auth::id())->count();
+        $reportsCount = Report::whereHas('address', function($q){
+            $q->where('user_id', Auth::id());
+        })->count();
 
         return view('user.dashboard', compact('addressesCount','sharesCount','reportsCount'));
     }
@@ -130,7 +132,13 @@ class UserController extends Controller
     // Mes signalements
     public function reports()
     {
-        $reports = Report::where('user_id', Auth::id())->with('address')->latest()->paginate(10);
+        $reports = Report::whereHas('address', function ($q) {
+            $q->where('user_id', Auth::id()); // on ne prend que les adresses de l'utilisateur connecté
+        })
+        ->with('address')
+        ->latest()
+        ->paginate(10);
+
         return view('user.reports.index', compact('reports'));
     }
 
@@ -160,6 +168,12 @@ class UserController extends Controller
         // $user->save();
 
         return redirect()->route('user.profile')->with('success','Profil mis à jour !');
+    }
+
+    public function showAddress($id)
+    {
+        $address = Address::where('user_id', Auth::id())->findOrFail($id);
+        return view('user.addresses.show', compact('address'));
     }
 
     /**

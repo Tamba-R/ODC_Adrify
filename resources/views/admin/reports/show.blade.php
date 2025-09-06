@@ -10,7 +10,7 @@
 
     <div class="bg-white rounded-lg shadow p-6 space-y-4">
         <p><span class="font-semibold">Adrify Code :</span> {{ $report->address->adrify_code }}</p>
-        <p><span class="font-semibold">Utilisateur :</span> {{ $report->user->nom }}</p>
+        <p><span class="font-semibold">Utilisateur :</span> {{ $report->user->name }}</p>
         <p><span class="font-semibold">Motif :</span> {{ $report->motif }}</p>
         <p><span class="font-semibold">Date :</span> {{ $report->date_signalement }}</p>
         <p><span class="font-semibold">Description Adresse :</span> {{ $report->address->description }}</p>

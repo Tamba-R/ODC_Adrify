@@ -107,6 +107,8 @@ Route::prefix('validator')->name('validator.')->middleware(['auth','role:validat
     Route::get('validations/pending', [ValidatorController::class,'pendingAddresses'])->name('pending');
     Route::post('validations/{address}/action', [ValidatorController::class,'validateAddress'])->name('action');
     Route::get('validations/history', [ValidatorController::class,'history'])->name('history');
+     // Signalements
+    Route::post('reports/{address}', [ValidatorController::class,'reportAddress'])->name('report');
 });
 
 
@@ -131,6 +133,10 @@ Route::prefix('user')->name('user.')->middleware(['auth','role:user'])->group(fu
     // Partage des adresses
     Route::get('addresses/{address}/share', [UserController::class,'shareAddress'])->name('addresses.share');
     Route::get('shares', [UserController::class, 'allShares'])->name('shares');
+    Route::get('addresses/{address}', [UserController::class,'showAddress'])->name('addresses.show');
+    Route::get('/shares', [ShareController::class, 'index'])->name('shares.index');
+    Route::get('/addresses/{address}/share/link', [ShareController::class, 'shareLink'])->name('addresses.share.link');
+    Route::get('/addresses/{address}/share/qr', [ShareController::class, 'shareQr'])->name('addresses.share.qr');
 
     // Signalements
     Route::get('reports', [UserController::class,'reports'])->name('reports');

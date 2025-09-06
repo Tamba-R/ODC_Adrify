@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Address;
 use App\Models\Validation;
+use App\Models\Report;
 
 use Illuminate\Support\Facades\Auth;
 
@@ -65,6 +66,22 @@ class ValidatorController extends Controller
     {
         $validations = Validation::where('user_id', Auth::id())->with('address')->latest()->paginate(10);
         return view('validator.history', compact('validations'));
+    }
+
+
+    public function reportAddress(Request $request, Address $address)
+    {
+        $request->validate([
+            'motif' => 'required|string|min:5|max:500',
+        ]);
+
+        Report::create([
+            'address_id' => $address->id,
+            'user_id' => auth()->id(),
+            'motif' => $request->motif,
+        ]);
+
+        return redirect()->back()->with('success', 'Adresse signalée avec succès.');
     }
 
 

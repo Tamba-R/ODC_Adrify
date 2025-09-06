@@ -34,6 +34,15 @@
                             <button name="action" value="validee" class="bg-green-600 hover:bg-green-700 text-white px-3 py-1 rounded transition">Valider</button>
                             <button name="action" value="rejete" class="bg-red-600 hover:bg-red-700 text-white px-3 py-1 rounded transition">Rejeter</button>
                         </form>
+                        <!-- Bouton Signaler -->
+                        <form action="{{ route('validator.report', $address->id) }}" method="POST" class="inline-block">
+                            @csrf
+                            <input type="text" name="motif" placeholder="Motif du signalement" 
+                                class="border rounded px-2 py-1 text-sm" required>
+                            <button type="submit" class="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600">
+                                Signaler
+                            </button>
+                        </form>
                     </td>
                 </tr>
                 @empty
