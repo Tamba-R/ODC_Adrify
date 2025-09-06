@@ -59,18 +59,18 @@
                             <button onclick="return confirm('Supprimer cette adresse ?')" class="text-red-600 hover:underline">Supprimer</button>
                         </form>
                         <a href="{{ route('user.addresses.share', $address) }}" class="text-green-600 hover:underline">Partager</a>
-                        <!-- Bouton WhatsApp -->
-                        <!-- Partager Lien WhatsApp -->
-                        <a href="{{ route('user.addresses.share.link', $address) }}"
-                           target="_blank"
-                           class="bg-green-500 text-white px-3 py-1 rounded hover:bg-green-600 flex items-center">
-                            📲 WhatsApp
+                        
+                        <!-- Bouton Partager Lien WhatsApp -->
+                        <a href="{{ route('user.addresses.share.link', $address->id) }}"
+                        target="_blank"
+                        class="bg-green-500 text-white px-3 py-1 rounded hover:bg-green-600 flex items-center">
+                        📲 Partager
                         </a>
 
-                        <!-- Partager QR Code -->
-                        <a href="{{ route('user.addresses.share.qr', $address) }}"
-                           class="bg-gray-800 text-white px-3 py-1 rounded hover:bg-gray-900 flex items-center">
-                            🖼 QR Code
+                        <!-- Bouton Partager QR Code -->
+                        <a href="{{ route('user.addresses.share.qr', $address->id) }}"
+                        class="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600 flex items-center">
+                        🖼 QR Code
                         </a>
                     </td>
                 </tr>

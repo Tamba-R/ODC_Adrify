@@ -6,55 +6,13 @@ use Illuminate\Http\Request;
 use App\Models\Share;
 use App\Models\Address;
 use Illuminate\Support\Facades\Auth;
+
+
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
 class ShareController extends Controller
 {
 
-    /**
-     * Partager une adresse via WhatsApp (Lien)
-     */
-    public function shareLink(Address $address)
-    {
-        // Sauvegarde du partage
-        Share::create([
-            'user_id'    => Auth::id(),
-            'address_id' => $address->id,
-            'type'       => 'Lien',
-        ]);
-
-        // Générer le lien WhatsApp
-        $url = route('user.addresses.show', $address->id);
-        $message = "Découvrez mon adresse Adrify : {$address->adrify_code} - {$url}";
-        $whatsappUrl = "https://wa.me/?text=" . urlencode($message);
-
-        return redirect($whatsappUrl);
-    }
-
-
-    /**
-     * Partager une adresse via QR Code
-     */
-    public function shareQr(Address $address)
-    {
-        // Sauvegarde du partage
-        Share::create([
-            'user_id'    => Auth::id(),
-            'address_id' => $address->id,
-            'type'       => 'QR Code',
-        ]);
-
-        // Générer le lien direct de l’adresse
-        $url = route('user.addresses.show', $address->id);
-
-        // Retourner une vue qui affiche le QR Code
-        return view('user.shares.qr', compact('address', 'url'));
-    }
-
-
-    /**
-     * Historique de mes partages
-     */
     public function index()
     {
         $shares = Share::where('user_id', Auth::id())
@@ -65,6 +23,7 @@ class ShareController extends Controller
         return view('user.shares.index', compact('shares'));
     }
 
+    
     /**
      * Show the form for creating a new resource.
      */

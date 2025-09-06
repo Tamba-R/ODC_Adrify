@@ -11,6 +11,7 @@ class Share extends Model
 
     protected $fillable = [
         'address_id',
+        'user_id',
         'type',
         'date_partage',
     ];
@@ -18,6 +19,11 @@ class Share extends Model
     public function address()
     {
         return $this->belongsTo(Address::class);
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
     }
 
     
