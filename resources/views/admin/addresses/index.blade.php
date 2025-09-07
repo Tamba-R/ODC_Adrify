@@ -34,9 +34,9 @@
                     <td class="px-4 py-2">{{ $address->description }}</td>
                     <td class="px-4 py-2">{{ $address->repere_local }}</td>
                     <td class="px-4 py-2">
-                        @if($address->statut == 'validée')
+                        @if($address->statut == 'validee')
                             <span class="text-green-600 font-semibold">{{ ucfirst($address->statut) }}</span>
-                        @elseif($address->statut == 'rejetée')
+                        @elseif($address->statut == 'rejete')
                             <span class="text-red-600 font-semibold">{{ ucfirst($address->statut) }}</span>
                         @else
                             <span class="text-yellow-600 font-semibold">{{ ucfirst($address->statut) }}</span>

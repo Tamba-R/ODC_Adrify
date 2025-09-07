@@ -24,12 +24,12 @@
         </div>
         <div class="flex justify-between">
             <span class="font-semibold text-gray-700">Validateur :</span>
-            <span class="text-gray-900">{{ $validation->user->nom }}</span>
+            <span class="text-gray-900">{{ $validation->user->name }}</span>
         </div>
         <div class="flex justify-between">
             <span class="font-semibold text-gray-700">Statut :</span>
             <span class="px-2 py-1 rounded text-white 
-                        {{ $validation->statut == 'validée' ? 'bg-green-600' : ($validation->statut == 'rejetée' ? 'bg-red-600' : 'bg-yellow-600') }}">
+                        {{ $validation->statut == 'validee' ? 'bg-green-600' : ($validation->statut == 'rejete' ? 'bg-red-600' : 'bg-yellow-600') }}">
                 {{ ucfirst($validation->statut) }}
             </span>
         </div>

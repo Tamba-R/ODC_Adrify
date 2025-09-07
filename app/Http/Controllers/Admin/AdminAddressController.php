@@ -63,7 +63,7 @@ class AdminAddressController extends Controller
             'longitude' => 'required|numeric',
             'description' => 'nullable|string',
             'repere_local' => 'nullable|string',
-            'statut' => 'required|in:en attente,validée,rejetée',
+            'statut' => 'required|in:en_attente,validée,rejetée',
         ]);
 
         $address->update($request->only('latitude', 'longitude', 'description', 'repere_local', 'statut'));

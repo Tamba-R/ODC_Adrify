@@ -31,9 +31,9 @@
                 @forelse($validations as $validation)
                 <tr class="hover:bg-gray-50">
                     <td class="border px-3 py-2">{{ $validation->address->adrify_code }}</td>
-                    <td class="border px-3 py-2">{{ $validation->user->nom }}</td>
+                    <td class="border px-3 py-2">{{ $validation->user->name }}</td>
                     <td class="border px-3 py-2">
-                        <span class="px-2 py-1 rounded text-white {{ $validation->statut == 'validée' ? 'bg-green-600' : ($validation->statut == 'rejetée' ? 'bg-red-600' : 'bg-yellow-600') }}">
+                        <span class="px-2 py-1 rounded text-white {{ $validation->statut == 'validee' ? 'bg-green-600' : ($validation->statut == 'rejete' ? 'bg-red-600' : 'bg-yellow-600') }}">
                             {{ ucfirst($validation->statut) }}
                         </span>
                     </td>

@@ -57,9 +57,9 @@
         <div>
             <label class="block mb-2 font-medium text-gray-700">Statut</label>
             <select name="statut" class="border border-gray-300 rounded p-3 w-full focus:ring-2 focus:ring-blue-500">
-                <option value="en attente" {{ $address->statut == 'en attente' ? 'selected' : '' }}>En attente</option>
-                <option value="validée" {{ $address->statut == 'validée' ? 'selected' : '' }}>Validée</option>
-                <option value="rejetée" {{ $address->statut == 'rejetée' ? 'selected' : '' }}>Rejetée</option>
+                <option value="en_attente" {{ $address->statut == 'en attente' ? 'selected' : '' }}>En attente</option>
+                <option value="validee" {{ $address->statut == 'validée' ? 'selected' : '' }}>Validée</option>
+                <option value="rejete" {{ $address->statut == 'rejetée' ? 'selected' : '' }}>Rejetée</option>
             </select>
             @error('statut')
                 <p class="text-red-600 text-sm mt-1">{{ $message }}</p>

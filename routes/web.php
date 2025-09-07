@@ -85,6 +85,8 @@ Route::prefix('admin')->name('admin.')->middleware(['auth','role:admin'])->group
 
     // Validations
     Route::get('validations', [AdminValidationController::class, 'index'])->name('validations.index');
+    Route::get('validations/{validation}', [AdminValidationController::class, 'show'])->name('validations.show');
+    Route::delete('validations/{validation}', [AdminValidationController::class, 'destroy'])->name('validations.destroy');
 
     // Signalements
     Route::resource('reports', ReportController::class)->only(['index', 'show', 'destroy']);

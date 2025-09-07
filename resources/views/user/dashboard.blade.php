@@ -41,7 +41,7 @@
             <div class="bg-white shadow-md rounded p-5">
                 <h2 class="text-xl font-semibold mb-2">Mes partages</h2>
                 <p class="text-4xl font-bold mb-4">{{ $sharesCount }}</p>
-                <a href="{{ route('user.shares.index') }}" class="text-green-600 hover:underline">Voir mes partages</a>
+                <a href="{{ route('user.user.shares.index') }}" class="text-green-600 hover:underline">Voir mes partages</a>
             </div>
 
             <!-- Mes signalements -->

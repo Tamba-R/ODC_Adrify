@@ -43,7 +43,7 @@
 
         <div class="flex justify-between">
             <span class="font-semibold text-gray-700">Créé par :</span>
-            <span class="text-gray-800">{{ $address->user->nom }}</span>
+            <span class="text-gray-800">{{ $address->user->name }}</span>
         </div>
 
         <div class="flex justify-between">
