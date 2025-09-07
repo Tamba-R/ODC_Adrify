@@ -17,6 +17,12 @@
 
 ## 📸 Captures d’écran
 
+**Page d'acceuil grand public**  
+![Dashboard utilisateur](screenshots/home.png)
+
+**Page à propos grand public**  
+![Dashboard utilisateur](screenshots/about.png)
+
 **Dashboard utilisateur**  
 ![Dashboard utilisateur](screenshots/dashboard_user.png)
 
