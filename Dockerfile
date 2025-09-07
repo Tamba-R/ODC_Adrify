@@ -1,31 +1,63 @@
+# =========================
+# Base image PHP + Apache
+# =========================
 FROM php:8.3-apache
 
-# Installer extensions PHP nécessaires
+# =========================
+# Installer les dépendances système
+# =========================
 RUN apt-get update && apt-get install -y \
-    libzip-dev zip unzip git && docker-php-ext-install pdo pdo_mysql
+    git \
+    unzip \
+    zip \
+    libpng-dev \
+    libjpeg-dev \
+    libfreetype6-dev \
+    libonig-dev \
+    libzip-dev \
+    && rm -rf /var/lib/apt/lists/*
 
-# Copier le code
-COPY . /var/www/html
+# =========================
+# Installer les extensions PHP nécessaires
+# =========================
+RUN docker-php-ext-configure gd --with-freetype --with-jpeg \
+    && docker-php-ext-install gd pdo pdo_mysql mbstring zip bcmath
 
+# =========================
 # Installer Composer
+# =========================
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
+# =========================
+# Copier le projet Laravel
+# =========================
 WORKDIR /var/www/html
+COPY . /var/www/html
 
-# Installer les dépendances Laravel
+# =========================
+# Installer les dépendances PHP avec Composer
+# =========================
 RUN composer install --no-dev --optimize-autoloader
 
-# Permissions
+# =========================
+# Configurer les permissions
+# =========================
 RUN chown -R www-data:www-data /var/www/html \
     && chmod -R 755 /var/www/html \
     && chmod -R 775 /var/www/html/storage /var/www/html/bootstrap/cache
 
-# Apache : pointer sur le dossier public
+# =========================
+# Configurer Apache
+# =========================
 RUN a2enmod rewrite
 RUN sed -i 's|DocumentRoot /var/www/html|DocumentRoot /var/www/html/public|' /etc/apache2/sites-available/000-default.conf
 
-# Exposer le port
+# =========================
+# Exposer le port 80
+# =========================
 EXPOSE 80
 
-# Commande pour démarrer Apache
+# =========================
+# Commande par défaut
+# =========================
 CMD ["apache2-foreground"]
