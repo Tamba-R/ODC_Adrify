@@ -6,16 +6,20 @@ FROM php:8.3-apache
 # =========================
 # Installer les dépendances système
 # =========================
-RUN apt-get update && apt-get install -y \
-    git \
-    unzip \
-    zip \
-    libpng-dev \
-    libjpeg-dev \
-    libfreetype6-dev \
-    libonig-dev \
-    libzip-dev \
-    && rm -rf /var/lib/apt/lists/*
+RUN apt-get update && \
+    apt-get install -y \
+        git \
+        unzip \
+        zip \
+        libpng-dev \
+        libjpeg-dev \
+        libfreetype6-dev \
+        libonig-dev \
+        libzip-dev \
+        libpq-dev && \
+    docker-php-ext-configure gd --with-freetype --with-jpeg && \
+    docker-php-ext-install pdo_pgsql gd mbstring zip && \
+    rm -rf /var/lib/apt/lists/*
 
 # =========================
 # Installer les extensions PHP nécessaires
