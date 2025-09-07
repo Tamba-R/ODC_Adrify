@@ -23,14 +23,33 @@
 **Page à propos grand public**  
 ![Dashboard utilisateur](screenshots/about.png)
 
+
+## 1️⃣ Administrateur (Admin)
+
+- L’administrateur a le contrôle complet sur l’application. Ses fonctions incluent :
+
+- Gérer tous les utilisateurs (créer, éditer, supprimer, consulter).
+
+- Gérer toutes les adresses de la plateforme.
+
+- Consulter et gérer toutes les validations faites par les validateurs.
+
+- Gérer tous les partages et les historiques de partage.
+
+- Consulter les signalements des utilisateurs et prendre les actions nécessaires.
+
+- Accéder à un tableau de bord complet avec toutes les statistiques de la plateforme.
+**Dashboard administrateur**  
+![Dashboard admin](screenshots/dashboard_admin.png)
+
 **Dashboard utilisateur**  
 ![Dashboard utilisateur](screenshots/dashboard_user.png)
 
 **Dashboard Validateur**  
+
 ![Partages](screenshots/dashboard_validator.png)
 
-**Dashboard administrateur**  
-![Dashboard admin](screenshots/dashboard_admin.png)
+
 
 > Pour insérer une capture, crée un dossier `screenshots` dans ton projet et ajoute tes images dedans.
 
@@ -40,5 +59,19 @@
 
 1. Cloner le dépôt :  
 ```bash
-git clone https://github.com/ton-user/adrify.git
+git clone https://github.com/Tamba-R/ODC_Adrify.git
 cd adrify
+
+2. Installer les dépendances PHP :
+```bash
+composer install
+
+3. Copier le fichier .env et générer la clé :
+```bash
+cp .env.example .env
+php artisan key:generate
+
+4. Configurer la base de données dans .env
+5. Lancer les migrations :
+```bash
+php artisan migrate
