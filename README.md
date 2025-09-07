@@ -20,8 +20,8 @@
 **Dashboard utilisateur**  
 ![Dashboard utilisateur](screenshots/dashboard_user.png)
 
-**Page des partages**  
-![Partages](screenshots/shares_page.png)
+**Dashboard Validateur**  
+![Partages](screenshots/dashboard_validator.png)
 
 **Dashboard administrateur**  
 ![Dashboard admin](screenshots/dashboard_admin.png)
