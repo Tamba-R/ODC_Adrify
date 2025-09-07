@@ -1,5 +1,10 @@
 # Adrify - Gestion d'adresses et partages
 
+![Laravel](https://img.shields.io/badge/Laravel-10-red)
+![PHP](https://img.shields.io/badge/PHP-8.3-blue)
+![License](https://img.shields.io/badge/License-MIT-green)
+![Build](https://img.shields.io/badge/build-passing-brightgreen)
+
 **Adrify** est une application web Laravel permettant aux utilisateurs de gérer leurs adresses, partager des liens ou QR codes, et suivre des validations.  
 
 ---
@@ -42,12 +47,41 @@
 **Dashboard administrateur**  
 ![Dashboard admin](screenshots/dashboard_admin.png)
 
+
+## 2️⃣ Validateur
+
+Le validateur est un utilisateur spécialisé dont le rôle est de vérifier et valider certaines actions ou contenus créés par les utilisateurs. Ses fonctions :
+
+- Consulter les adresses à valider.
+
+- Valider ou rejeter les adresses ou actions selon les critères définis.
+
+- Suivre l’historique des validations effectuées.
+
+- Accéder à un tableau de bord dédié pour suivre les validations en attente ou terminées.
+**Dashboard Validateur**  
+![Partages](screenshots/dashboard_validator.png)
+
+
+## 3️⃣ Utilisateur (User)
+
+L’utilisateur est le rôle classique pour les personnes utilisant la plateforme pour gérer leurs propres informations. Ses fonctions :
+
+- Créer, modifier et supprimer ses adresses.
+
+- Partager ses adresses via liens ou QR codes.
+
+- Consulter l’historique de ses partages.
+
+- Signaler des adresses ou contenus problématiques.
+
+- Accéder à un tableau de bord personnel avec ses statistiques (nombre d’adresses, partages et signalements).
+
 **Dashboard utilisateur**  
 ![Dashboard utilisateur](screenshots/dashboard_user.png)
 
-**Dashboard Validateur**  
 
-![Partages](screenshots/dashboard_validator.png)
+
 
 
 
@@ -72,6 +106,10 @@ cp .env.example .env
 php artisan key:generate
 
 4. Configurer la base de données dans .env
+
 5. Lancer les migrations :
-```bash
 php artisan migrate
+
+6. Lancer le serveur local :
+php artisan serve
+
