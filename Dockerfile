@@ -15,8 +15,6 @@ RUN apt-get update && apt-get install -y \
     libfreetype6-dev \
     libonig-dev \
     libzip-dev \
-    apt-get install -y libpq-dev && \
-    docker-php-ext-install pdo_pgsql \
     && rm -rf /var/lib/apt/lists/*
 
 # =========================
